@@ -14,5 +14,6 @@
 # Dependency directories (remove the comment below to include it)
 # vendor/
 
-pub/.idea/
-sub_cache/.idea/
+#folders
+/sub_cache/.idea/
+/pub/.idea/
