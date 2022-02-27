@@ -1,27 +1,37 @@
 package BrokerConnection
 
 import (
+	"encoding/json"
 	"fmt"
+	lru "github.com/hashicorp/golang-lru"
 	"github.com/nats-io/nats.go"
+	"log"
 	"time"
 
 	"github.com/nats-io/stan.go"
 )
 
-func KeepAliveSub(url, clusterID, clientID, subject string) {
+func KeepAliveSub(cache *lru.Cache, url, clusterID, clientID, subject string) error {
 	for {
 		fmt.Println("connection to stan...")
 
 		stanConn, errConn := stan.Connect(clusterID, clientID, stan.NatsURL(url))
 		if errConn != nil {
 			fmt.Println("conn: ", errConn)
-			return
+			return errConn
 		}
 		fmt.Println("connected")
 
+
+
+		var order interface{}
 		_, errSub := stanConn.Subscribe(subject, func(m *stan.Msg) {
-			fmt.Println("msg from broker: ", string(m.Data))
-			time.Sleep(time.Second * 5)
+			if errUnmarshal := json.Unmarshal(m.Data, &order); errUnmarshal != nil {
+				log.Printf("unmarshal: %v", errUnmarshal)
+				return
+			}
+
+
 		})
 		if errSub != nil {
 			fmt.Println("failed subscribe")
@@ -38,8 +48,8 @@ func KeepAliveSub(url, clusterID, clientID, subject string) {
 			chSubIsClosed <- true
 		}(chSubIsClosed, stanConn.NatsConn())
 
-		<-chSubIsClosed
-		fmt.Println("ERROR: nats connection is closed")
+		 <-chSubIsClosed
+		 return fmt.Errorf("ERROR: nats connection is closed")
 	}
 
 }

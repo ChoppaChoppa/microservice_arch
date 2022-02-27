@@ -47,8 +47,9 @@ func Connection(uri string) (*DB, error) {
 		conn: dataBase,
 	}, nil
 }
+//TODO проверить можно возвращать боле значений в постгрес
 
-func (dataBase *DB) Add(ctx context.Context, user Models.User) (Models.User, error){
+func (dataBase *DB) Add(ctx context.Context, user Models.) (Models.OrderInfo, error) {
 	var id string
 
 	hash, errHash := HashPassword(user.Password)
@@ -59,15 +60,15 @@ func (dataBase *DB) Add(ctx context.Context, user Models.User) (Models.User, err
 
 	if errCreate := dataBase.conn.GetContext(ctx, &id,
 		`INSERT INTO users(login, password)
-VALUES ($1, $2)
-RETURNING id`, user.Login, hash); errCreate != nil {
+				VALUES ($1, $2)
+				RETURNING id`, user.Login, hash); errCreate != nil {
 		fmt.Errorf("failed to create user %v", errCreate.Error())
 		return Models.User{}, errCreate
 	}
 
 	User := Models.User{
-		ID: id,
-		Login: user.Login,
+		ID:       id,
+		Login:    user.Login,
 		Password: hash,
 	}
 
