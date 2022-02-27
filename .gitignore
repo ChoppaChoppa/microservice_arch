@@ -16,3 +16,5 @@
 
 /pub/.idea
 /sub_cache/.idea
+.idea/
+*/.idea/
