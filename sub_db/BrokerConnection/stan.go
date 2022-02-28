@@ -1,17 +1,25 @@
 package BrokerConnection
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
-	lru "github.com/hashicorp/golang-lru"
 	"github.com/nats-io/nats.go"
-	"log"
+	"sub_db/Models"
 	"time"
 
 	"github.com/nats-io/stan.go"
 )
 
-func KeepAliveSub(cache *lru.Cache, url, clusterID, clientID, subject string) error {
+type IPgDataBase interface {
+	Add(ctx context.Context, order Models.OrderInfo) (Models.OrderInfo, error)
+}
+
+type DataBase struct {
+	DB IPgDataBase
+}
+
+func KeepAliveSub(pg DataBase, url, clusterID, clientID, subject string) error {
 	for {
 		fmt.Println("connection to stan...")
 
@@ -24,14 +32,23 @@ func KeepAliveSub(cache *lru.Cache, url, clusterID, clientID, subject string) er
 
 
 
-		var order interface{}
+		var order Models.OrderInfo
 		_, errSub := stanConn.Subscribe(subject, func(m *stan.Msg) {
+			fmt.Println(string(m.Data))
 			if errUnmarshal := json.Unmarshal(m.Data, &order); errUnmarshal != nil {
-				log.Printf("unmarshal: %v", errUnmarshal)
+				fmt.Println("unmarshal: ", errUnmarshal)
 				return
 			}
 
+			if errUnmarshal := json.Unmarshal(m.Data, &order); errUnmarshal != nil {
+				fmt.Println("unmarshal: ", errUnmarshal)
+				return
+			}
 
+			_, errAdd := pg.DB.Add(context.Background(), order)
+			if errAdd != nil {
+				fmt.Println("failed to add in db: ", errAdd)
+			}
 		})
 		if errSub != nil {
 			fmt.Println("failed subscribe")
