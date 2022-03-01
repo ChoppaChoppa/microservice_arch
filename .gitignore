@@ -15,6 +15,7 @@
 # vendor/
 
 /pub/.idea
+/sub_db/.idea
 /sub_cache/.idea
 .idea/
 */.idea/
