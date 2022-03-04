@@ -16,5 +16,6 @@
 
 /pub/.idea
 /sub_cache/.idea
+/sub_db/.idea
 .idea/
 */.idea/
