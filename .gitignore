@@ -17,3 +17,5 @@
 #folders
 /sub_cache/.idea/
 /pub/.idea/
+/sub_db/.idea/
+.idea
