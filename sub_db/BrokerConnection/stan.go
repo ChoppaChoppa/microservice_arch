@@ -11,6 +11,8 @@ import (
 	"github.com/nats-io/stan.go"
 )
 
+const secretKey string = "sub_db"
+
 type IPgDataBase interface {
 	Add(ctx context.Context, order Models.OrderInfo) (Models.OrderInfo, error)
 }
@@ -32,20 +34,19 @@ func KeepAliveSub(pg DataBase, url, clusterID, clientID, subject string) error {
 
 
 
-		var order Models.OrderInfo
+		var msg Models.Message
 		_, errSub := stanConn.Subscribe(subject, func(m *stan.Msg) {
-			fmt.Println(string(m.Data))
-			if errUnmarshal := json.Unmarshal(m.Data, &order); errUnmarshal != nil {
+			if errUnmarshal := json.Unmarshal(m.Data, &msg); errUnmarshal != nil {
 				fmt.Println("unmarshal: ", errUnmarshal)
 				return
 			}
 
-			if errUnmarshal := json.Unmarshal(m.Data, &order); errUnmarshal != nil {
-				fmt.Println("unmarshal: ", errUnmarshal)
+			if msg.SecretKey != secretKey {
+				fmt.Println("wrong key")
 				return
 			}
 
-			_, errAdd := pg.DB.Add(context.Background(), order)
+			_, errAdd := pg.DB.Add(context.Background(), msg.Order)
 			if errAdd != nil {
 				fmt.Println("failed to add in db: ", errAdd)
 			}
