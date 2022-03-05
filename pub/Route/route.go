@@ -13,7 +13,7 @@ import (
 	"pub/Models"
 )
 
-const secretKey = "secret_maui"
+const secretKey = "publisher"
 
 type NatsConn struct {
 	Conn stan.Conn
@@ -26,21 +26,25 @@ func Router(stanConn NatsConn) *chi.Mux {
 	router.Post("/pub", func(w http.ResponseWriter, r *http.Request) {
 		defer r.Body.Close()
 
-		var user Models.User
-		if errUnmarshalBody := UnmarshalBody(r.Body, &user); errUnmarshalBody != nil {
-			HttpProcessing.HttpError(w, errUnmarshalBody, "failed unmarshal body",
-				"server error", http.StatusInternalServerError)
+		var msg Models.Message
+		if errUnmarshalBody := UnmarshalBody(r.Body, &msg); errUnmarshalBody != nil || msg.SecretKey != secretKey{
+			HttpProcessing.HttpError(w, errUnmarshalBody, "failed unmarshal body or wrong key",
+				"bad request", http.StatusBadRequest)
 			return
 		}
 
-		user.SecretKey = secretKey
-		userB, errMarshal := json.Marshal(user)
+		msgResp := Models.Message{
+			Order: msg.Order,
+			SecretKey: "sub_db",
+		}
+
+		msgByte, errMarshal := json.Marshal(msgResp)
 		if errMarshal != nil {
 			HttpProcessing.HttpError(w, errMarshal, "failed marshal user",
 				"server error", http.StatusInternalServerError)
 		}
 
-		if errPub := stanConn.Conn.Publish("db_service", userB); errPub != nil {
+		if errPub := stanConn.Conn.Publish("db_service", msgByte); errPub != nil {
 			HttpProcessing.HttpError(w, errPub, "posting error",
 				"server error", http.StatusInternalServerError)
 			return

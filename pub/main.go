@@ -7,10 +7,9 @@ import (
 	"pub/Route"
 )
 
-const pgDB string = "postgresql://maui:maui@172.20.10.3:5432/postgres"
-
 func main() {
-	stanConn, errConn := stan.Connect("test-cluster", "publisher", stan.NatsURL("172.20.10.3:4222"))
+	stanConn, errConn := stan.Connect("test-cluster", "publisher",
+		stan.NatsURL("172.20.10.3:4222"))
 	if errConn != nil {
 		fmt.Println("conn: ", errConn)
 		return
