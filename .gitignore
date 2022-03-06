@@ -20,6 +20,7 @@
 /sub_db/.idea/
 .idea
 */.idea/
+/.idea/
 =======
 #folders
 */.idea/**/tasks.xml

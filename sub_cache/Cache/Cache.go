@@ -2,8 +2,12 @@ package Cache
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	lru "github.com/hashicorp/golang-lru"
+	"io/ioutil"
+	"net/http"
+	"strconv"
 	"sub_cache/Models"
 )
 
@@ -16,16 +20,22 @@ type Postgres struct {
 }
 
 func CreateCache(cache *lru.Cache, pg Postgres, cacheSize int) error {
-	fmt.Println("cache len ", cache.Len())
-	orders, errGetLasts := pg.DB.GetLasts(context.Background(), cacheSize)
+	resp, errGetLasts := http.Get("http://127.0.0.1:3002/get/last/" + strconv.Itoa(cacheSize))
 	if errGetLasts != nil {
 		return fmt.Errorf("get lasts: %v", errGetLasts)
 	}
 
-	fmt.Println(orders)
+	var orders []Models.OrderInfo
+	body, errGetBody := ioutil.ReadAll(resp.Body)
+	if errGetBody != nil {
+		fmt.Errorf("get body: %v", errGetBody.Error())
+	}
+	if errUnmarshalBody := json.Unmarshal(body, &orders); errUnmarshalBody != nil || errGetBody != nil {
+		return fmt.Errorf("unmarshal body: %v", errUnmarshalBody)
+	}
+	
 	for _, v := range orders {
 		cache.Add(v.ID, v)
-		fmt.Println(cache.Get(v.ID))
 	}
 
 	return nil
