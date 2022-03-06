@@ -37,18 +37,15 @@
     <section class="u-align-center u-clearfix u-section-1" id="sec-1955">
         <div class="u-clearfix u-sheet u-sheet-1">
             <div class="u-expanded-width u-form u-form-1">
-                <form action="#" method="POST" class="u-clearfix u-form-horizontal u-form-spacing-15 u-inner-form" style="padding: 15px" source="custom">
+                <form asp-controller="Home" asp-action="GetByID" method="post">
                     <div class="u-form-group u-form-name u-label-top u-form-group-1">
                         <label for="name-558c" class="u-label">ID</label>
-                        <input type="text" placeholder="ID" id="name-558c" name="name" class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required="">
+                        <input type="text" placeholder="ID" id="name-558c" name="id_input" class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required="">
                     </div>
                     <div class="u-form-group u-form-submit u-form-group-2">
-                        <a href="#" class="u-btn u-btn-submit u-button-style">Submit</a>
-                        <input type="submit" value="submit" class="u-form-control-hidden">
+                        <button class="u-btn u-btn-submit u-button-style" type="submit">Get</button>
+
                     </div>
-                    <div class="u-form-send-message u-form-send-success">Thank you! Your message has been sent.</div>
-                    <div class="u-form-send-error u-form-send-message">Unable to send your message. Please fix errors then try again.</div>
-                    <input type="hidden" value="" name="recaptchaResponse">
                 </form>
             </div>
         </div>
