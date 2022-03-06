@@ -38,7 +38,7 @@ func Route(cache *lru.Cache) *chi.Mux{
 		if !ok {
 			fmt.Println("get from db")
 
-			orderResp, errResp:= http.Get("http://127.0.0.1:3002/get/" + id)
+			orderResp, errResp:= http.Get("http://127.0.0.1:3002/sub_db/get/" + id)
 			if errResp != nil {
 				HttpProcessing.ErrorHandler(w, errResp, "http request",
 					"server error", http.StatusInternalServerError)
