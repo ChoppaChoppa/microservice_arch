@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	connection, errConnection := PgDataBase.Connection("postgresql://maui:maui@172.20.10.3:5432/postgres")
+	connection, errConnection := PgDataBase.Connection("postgresql://maui:maui@192.168.0.139:5432/postgres")
 	if errConnection != nil {
 		//log.Panic("failed to connect: ", errConnection)
 		//return

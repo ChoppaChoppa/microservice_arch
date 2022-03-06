@@ -20,6 +20,8 @@
 */.idea/**/usage.statistics.xml
 */.idea/**/dictionaries
 */.idea/**/shelf
+/.idea/
+/sub_db/.idea/
 
 # AWS User-specific
 */.idea/**/aws.xml
