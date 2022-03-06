@@ -5,8 +5,8 @@ import (
 	"encoding/json"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
-	"io/ioutil"
 	"net/http"
+	"strconv"
 
 	"sub_db/HttpProcessing"
 	"sub_db/Models"
@@ -47,24 +47,17 @@ func Router(pg DataBase) *chi.Mux {
 			w.Write(resp)
 		})
 
-		route.Get("/lasts", func(w http.ResponseWriter, r *http.Request) {
-			type request struct {
-				count int
-			}
-			var reqStruct request
-			body, errGetBody := ioutil.ReadAll(r.Body)
-			if errGetBody != nil {
-				HttpPorcessing.HttpError(w, errGetBody, "read body",
-					"bad request", http.StatusBadRequest)
-				return
-			}
-			if errUnmarshalBody := json.Unmarshal(body, &reqStruct); errUnmarshalBody != nil {
-				HttpPorcessing.HttpError(w, errUnmarshalBody, "unmarshal body",
-					"bad request", http.StatusBadRequest)
+		route.Get("/lasts/{count}", func(w http.ResponseWriter, r *http.Request) {
+			param := chi.URLParam(r, "count")
+
+			count, errIsDigit := strconv.Atoi(param)
+			if errIsDigit != nil {
+				HttpPorcessing.HttpError(w, errIsDigit, "param is not digit",
+					"param is not digit", http.StatusBadRequest)
 				return
 			}
 
-			orders, errGet := pg.DB.GetLasts(r.Context(), reqStruct.count)
+			orders, errGet := pg.DB.GetLasts(r.Context(), count)
 			if errGet != nil {
 				HttpPorcessing.HttpError(w, errGet, "get last orders",
 					"server error", http.StatusInternalServerError)
