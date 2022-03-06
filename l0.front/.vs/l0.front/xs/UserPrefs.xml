@@ -1,0 +1,37 @@
+﻿<Properties StartupConfiguration="{97C8D6B9-C3EF-44EE-BD5E-6CD33691D75C}|Default">
+  <MonoDevelop.Ide.ItemProperties.l0.front PreferredExecutionTarget="/Applications/Safari.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="l0.front/Controllers/HomeController.cs">
+    <Files>
+      <File FileName="l0.front/Views/Home/Index.cshtml" Line="43" Column="90" />
+      <File FileName="l0.front/Properties/launchSettings.json" Line="21" Column="47" />
+      <File FileName="l0.front/Controllers/HomeController.cs" Line="31" Column="70" />
+      <File FileName="l0.front/Views/Home/Order.cshtml" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="l0.front" expanded="True">
+            <Node name="l0.front" expanded="True">
+              <Node name="Controllers" expanded="True">
+                <Node name="HomeController.cs" selected="True" />
+              </Node>
+              <Node name="Models" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="Home" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
