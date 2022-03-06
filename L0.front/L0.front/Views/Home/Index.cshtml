@@ -16,8 +16,8 @@
     <title>Страница 1</title>
     <link rel="stylesheet" href="~/css/nicepage.css" media="screen">
     <link rel="stylesheet" href="~/css/home.css" media="screen">
-    <script class="u-script" type="text/javascript" src="~/js/jquery.js" defer=""></script>
-    <script class="u-script" type="text/javascript" src="~/js/nicepage.js" defer=""></script>
+    @*<script class="u-script" type="text/javascript" src="~/js/jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="~/js/nicepage.js" defer=""></script>*@
     <meta name="generator" content="Nicepage 4.3.0, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
 
@@ -37,19 +37,19 @@
     <section class="u-align-center u-clearfix u-section-1" id="sec-1955">
         <div class="u-clearfix u-sheet u-sheet-1">
             <div class="u-expanded-width u-form u-form-1">
-                <form action="#" method="POST" class="u-clearfix u-form-horizontal u-form-spacing-15 u-inner-form" style="padding: 15px" source="custom">
+                
                     <div class="u-form-group u-form-name u-label-top u-form-group-1">
                         <label for="name-558c" class="u-label">ID</label>
                         <input type="text" placeholder="ID" id="name-558c" name="id_input" class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required="">
                     </div>
                     <div class="u-form-group u-form-submit u-form-group-2">
-                        <a class="u-btn u-btn-submit u-button-style" asp-controller="Home" asp-action="GetByID">Submit</a>
-                        <input type="submit" value="submit" class="u-form-control-hidden">
+                        <a class="u-btn u-btn-submit u-button-style" asp-controller="Home" asp-action="GetByID">Get</a>
+                    
                     </div>
                     <div class="u-form-send-message u-form-send-success">Thank you! Your message has been sent.</div>
                     <div class="u-form-send-error u-form-send-message">Unable to send your message. Please fix errors then try again.</div>
-                    <input type="hidden" value="" name="recaptchaResponse">
-                </form>
+                    
+                
             </div>
         </div>
     </section>

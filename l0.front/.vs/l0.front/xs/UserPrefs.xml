@@ -1,23 +1,22 @@
-﻿<Properties StartupConfiguration="{97C8D6B9-C3EF-44EE-BD5E-6CD33691D75C}|Default">
+﻿<Properties StartupConfiguration="{DE480854-509B-4783-B90D-1D07CBF4F8E8}|Default">
   <MonoDevelop.Ide.ItemProperties.l0.front PreferredExecutionTarget="/Applications/Safari.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="l0.front/Controllers/HomeController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="l0.front/Views/Home/Index.cshtml">
     <Files>
-      <File FileName="l0.front/Views/Home/Index.cshtml" Line="43" Column="90" />
-      <File FileName="l0.front/Properties/launchSettings.json" Line="21" Column="47" />
-      <File FileName="l0.front/Controllers/HomeController.cs" Line="31" Column="70" />
-      <File FileName="l0.front/Views/Home/Order.cshtml" Line="1" Column="1" />
+      <File FileName="l0.front/Controllers/HomeController.cs" Line="34" Column="58" />
+      <File FileName="l0.front/Views/Shared/Error.cshtml" Line="1" Column="1" />
+      <File FileName="l0.front/Views/Home/Index.cshtml" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="l0.front" expanded="True">
             <Node name="l0.front" expanded="True">
-              <Node name="Controllers" expanded="True">
-                <Node name="HomeController.cs" selected="True" />
-              </Node>
-              <Node name="Models" expanded="True" />
+              <Node name="Controllers" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="Home" expanded="True" />
+                <Node name="Home" expanded="True">
+                  <Node name="Index.cshtml" selected="True" />
+                </Node>
+                <Node name="Shared" expanded="True" />
               </Node>
             </Node>
           </Node>
@@ -31,7 +30,9 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/moratherest/Projects/wb_l0/l0.front/l0.front/Controllers/HomeController.cs" relfile="l0.front/Controllers/HomeController.cs" line="31" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

@@ -26,12 +26,12 @@ namespace l0.front.Controllers
             return View();
         }
 
-        public async Task<IActionResult> GetByID(string ID)
+        public IActionResult GetByID()
         {
             WebRequest request = WebRequest.Create($"http://127.0.0.1/sub_cache/" + Request.Form["id_input"]);
             request.Method = "GET";
 
-            WebResponse response = await request.GetResponseAsync();
+            WebResponse response = request.GetResponse();
             string respJson;
             using (Stream stream = response.GetResponseStream())
             {
