@@ -23,7 +23,7 @@ type Postgres struct {
 	DB IpgDataBase
 }
 
-func Route(pg Postgres, cache *lru.Cache) *chi.Mux{
+func Route(cache *lru.Cache) *chi.Mux{
 	router := chi.NewRouter()
 	router.Use(middleware.Logger)
 

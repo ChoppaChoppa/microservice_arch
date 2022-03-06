@@ -19,8 +19,8 @@ type Postgres struct {
 	DB    IpgDataBase
 }
 
-func CreateCache(cache *lru.Cache, pg Postgres, cacheSize int) error {
-	resp, errGetLasts := http.Get("http://127.0.0.1:3002/get/last/" + strconv.Itoa(cacheSize))
+func CreateCache(cache *lru.Cache, cacheSize int) error {
+	resp, errGetLasts := http.Get("http://127.0.0.1:3002/sub_db/lasts/" + strconv.Itoa(cacheSize))
 	if errGetLasts != nil {
 		return fmt.Errorf("get lasts: %v", errGetLasts)
 	}
