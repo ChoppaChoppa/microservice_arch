@@ -1,0 +1,338 @@
+﻿@model l0.front.Models.OrderInfo
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="page_type" content="np-template-header-footer-from-plugin">
+    <title>Страница 1</title>
+    <link rel="stylesheet" href="~/css/nicepage.css" media="screen">
+    <link rel="stylesheet" href="~/css/home.css" media="screen">
+    <script class="u-script" type="text/javascript" src="~/js/jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="~/js/nicepage.js" defer=""></script>
+    <meta name="generator" content="Nicepage 4.3.0, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+
+
+
+    <script type="application/ld+json">{
+		@*"@context": "http://schema.org",
+		"@type": "Organization",*@
+		"name": ""
+}</script>
+    <meta name="theme-color" content="#478ac9">
+    <meta property="og:title" content="Страница 1">
+    <meta property="og:type" content="website">
+</head>
+<body class="u-body">
+    <header class="u-clearfix u-custom-color-2 u-header u-header" id="sec-13e7"><div class="u-clearfix u-sheet u-sheet-1"></div></header>
+    <section class="u-align-center u-clearfix u-section-1" id="sec-1955">
+        <div class="u-clearfix u-sheet u-sheet-1">
+            <div class="u-expanded-width u-form u-form-1">
+                <form action="#" method="POST" class="u-clearfix u-form-horizontal u-form-spacing-15 u-inner-form" style="padding: 15px" source="custom">
+                    <div class="u-form-group u-form-name u-label-top u-form-group-1">
+                        <label for="name-558c" class="u-label">ID</label>
+                        <input type="text" placeholder="ID" id="name-558c" name="name" class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required="">
+                    </div>
+                    <div class="u-form-group u-form-submit u-form-group-2">
+                        <a href="#" class="u-btn u-btn-submit u-button-style">Submit</a>
+                        <input type="submit" value="submit" class="u-form-control-hidden">
+                    </div>
+                    <div class="u-form-send-message u-form-send-success">Thank you! Your message has been sent.</div>
+                    <div class="u-form-send-error u-form-send-message">Unable to send your message. Please fix errors then try again.</div>
+                    <input type="hidden" value="" name="recaptchaResponse">
+                </form>
+            </div>
+        </div>
+    </section>
+    <section class="u-clearfix u-section-2" id="sec-7531">
+        <div class="u-clearfix u-sheet u-sheet-1">
+            <div class="u-expanded-width u-tab-links-align-left u-tabs u-tabs-1">
+                <ul class="u-border-2 u-border-palette-1-base u-spacing-10 u-tab-list u-unstyled" role="tablist">
+                    <li class="u-tab-item" role="presentation">
+                        <a class="active u-active-palette-1-base u-button-style u-grey-10 u-tab-link u-text-active-white u-text-black u-tab-link-1" id="link-tab-0da5" href="#tab-0da5" role="tab" aria-controls="tab-0da5" aria-selected="true">OrderInfo</a>
+                    </li>
+                    <li class="u-tab-item" role="presentation">
+                        <a class="u-active-palette-1-base u-button-style u-grey-10 u-tab-link u-text-active-white u-text-black u-tab-link-2" id="link-tab-10ae" href="#tab-10ae" role="tab" aria-controls="tab-10ae" aria-selected="false">Delivery</a>
+                    </li>
+                    <li class="u-tab-item" role="presentation">
+                        <a class="u-active-palette-1-base u-button-style u-grey-10 u-tab-link u-text-active-white u-text-black u-tab-link-3" id="link-tab-2d17" href="#tab-2d17" role="tab" aria-controls="tab-2d17" aria-selected="false">Payments</a>
+                    </li>
+                    <li class="u-tab-item" role="presentation">
+                        <a class="u-active-palette-1-base u-button-style u-grey-10 u-tab-link u-text-active-white u-text-black u-tab-link-4" id="link-tab-b57a" href="#tab-b57a" role="tab" aria-controls="tab-b57a" aria-selected="false">Items</a>
+                    </li>
+                </ul>
+                <div class="u-tab-content">
+                    <div class="u-container-style u-tab-active u-tab-pane u-white u-tab-pane-1" id="tab-0da5" role="tabpanel" aria-labelledby="link-tab-0da5">
+                        <div class="u-container-layout u-valign-top u-container-layout-1">
+                            <h4 class="u-text u-text-default u-text-1">Basic Settings</h4>
+                            <div class="u-expanded-width u-table u-table-responsive u-table-1">
+                                <table class="u-table-entity">
+                                    <colgroup>
+                                        <col width="25%">
+                                        <col width="25%">
+                                        <col width="25%">
+                                        <col width="25%">
+                                    </colgroup>
+                                    <tbody class="u-table-alt-grey-5 u-table-body">
+                                        <tr style="height: 51px;">
+                                            <td class="u-table-cell">Column 1</td>
+                                            <td class="u-table-cell">Column 2</td>
+                                        </tr>
+                                        <tr style="height: 51px;">
+                                            <td class="u-table-cell">order_uid</td>
+                                            <td class="u-table-cell">@Model.order_uid</td>
+                                        </tr>
+                                        <tr style="height: 51px;">
+                                            <td class="u-table-cell">track number</td>
+                                            <td class="u-table-cell">@Model.track_number</td>
+                                        </tr>
+                                        <tr style="height: 51px;">
+                                            <td class="u-table-cell">entry</td>
+                                            <td class="u-table-cell">@Model.entry</td>
+                                        </tr>
+                                        <tr style="height: 52px;">
+                                            <td class="u-table-cell">locale</td>
+                                            <td class="u-table-cell">@Model.locale</td>
+                                        </tr>
+                                        <tr style="height: 52px;">
+                                            <td class="u-table-cell">internal signature</td>
+                                            <td class="u-table-cell">@Model.internal_signature</td>
+                                        </tr>
+                                        <tr style="height: 52px;">
+                                            <td class="u-table-cell">customer id</td>
+                                            <td class="u-table-cell">@Model.customer_id</td>
+                                        </tr>
+                                        <tr style="height: 52px;">
+                                            <td class="u-table-cell">delivery service</td>
+                                            <td class="u-table-cell">@Model.delivery_service</td>
+                                        </tr>
+                                        <tr style="height: 52px;">
+                                            <td class="u-table-cell">shard key</td>
+                                            <td class="u-table-cell">@Model.shardkey</td>
+                                        </tr>
+                                        <tr style="height: 52px;">
+                                            <td class="u-table-cell">sm_id</td>
+                                            <td class="u-table-cell">@Model.sm_id</td>
+                                        </tr>
+                                        <tr style="height: 52px;">
+                                            <td class="u-table-cell">date created</td>
+                                            <td class="u-table-cell">@Model.date_created</td>
+                                        </tr>
+                                        <tr style="height: 52px;">
+                                            <td class="u-table-cell">oof_shard</td>
+                                            <td class="u-table-cell">@Model.oof_shard</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="u-container-style u-tab-pane u-white u-tab-pane-2" id="tab-10ae" role="tabpanel" aria-labelledby="link-tab-10ae">
+                        <div class="u-container-layout u-valign-top u-container-layout-2">
+                            <h4 class="u-text u-text-default u-text-2">Basic Settings</h4>
+                            <div class="u-expanded-width u-table u-table-responsive u-table-2">
+                                <table class="u-table-entity">
+                                    <colgroup>
+                                        <col width="25%">
+                                        <col width="25%">
+                                        <col width="25%">
+                                        <col width="25%">
+                                    </colgroup>
+                                    <tbody class="u-table-alt-grey-5 u-table-body">
+                                        <tr style="height: 51px;">
+                                            <td class="u-table-cell">Name</td>
+                                            <td class="u-table-cell">Value</td>
+                                        </tr>
+                                        <tr style="height: 51px;">
+                                            <td class="u-table-cell">name</td>
+                                            <td class="u-table-cell">@Model.delivery.name</td>
+                                        </tr>
+                                        <tr style="height: 51px;">
+                                            <td class="u-table-cell">phone</td>
+                                            <td class="u-table-cell">@Model.delivery.phone</td>
+                                        </tr>
+                                        <tr style="height: 51px;">
+                                            <td class="u-table-cell">zip</td>
+                                            <td class="u-table-cell">@Model.delivery.zip</td>
+                                        </tr>
+                                        <tr style="height: 52px;">
+                                            <td class="u-table-cell">city</td>
+                                            <td class="u-table-cell">@Model.delivery.city</td>
+                                        </tr>
+                                        <tr style="height: 51px;">
+                                            <td class="u-table-cell">address</td>
+                                            <td class="u-table-cell">@Model.delivery.address</td>
+                                        </tr>
+                                        <tr style="height: 51px;">
+                                            <td class="u-table-cell">region</td>
+                                            <td class="u-table-cell">@Model.delivery.region</td>
+                                        </tr>
+                                        <tr style="height: 51px;">
+                                            <td class="u-table-cell">email</td>
+                                            <td class="u-table-cell">@Model.delivery.email</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="u-container-style u-tab-pane u-white u-tab-pane-3" id="tab-2d17" role="tabpanel" aria-labelledby="link-tab-2d17">
+                        <div class="u-container-layout u-valign-top u-container-layout-3">
+                            <h4 class="u-text u-text-default u-text-3">Basic Settings</h4>
+                            <div class="u-expanded-width u-table u-table-responsive u-table-3">
+                                <table class="u-table-entity">
+                                    <colgroup>
+                                        <col width="25%">
+                                        <col width="25%">
+                                        <col width="25%">
+                                        <col width="25%">
+                                    </colgroup>
+                                    <tbody class="u-table-alt-grey-5 u-table-body">
+                                        <tr style="height: 51px;">
+                                            <td class="u-table-cell">Name</td>
+                                            <td class="u-table-cell">Value</td>
+                                        </tr>
+                                        <tr style="height: 51px;">
+                                            <td class="u-table-cell">transaction</td>
+                                            <td class="u-table-cell">@Model.payment.transaction</td>
+
+                                        </tr>
+                                        <tr style="height: 51px;">
+                                            <td class="u-table-cell">request id</td>
+                                            <td class="u-table-cell">@Model.payment.request_id</td>
+
+                                        </tr>
+                                        <tr style="height: 51px;">
+                                            <td class="u-table-cell">currency</td>
+                                            <td class="u-table-cell">@Model.payment.currency</td>
+
+
+                                        </tr>
+                                        <tr style="height: 52px;">
+                                            <td class="u-table-cell">provider</td>
+                                            <td class="u-table-cell">@Model.payment.provider</td>
+
+                                        </tr>
+                                        <tr style="height: 51px;">
+                                            <td class="u-table-cell">amount</td>
+                                            <td class="u-table-cell">@Model.payment.amount</td>
+
+                                        </tr>
+                                        <tr style="height: 51px;">
+                                            <td class="u-table-cell">payment dt</td>
+                                            <td class="u-table-cell">@Model.payment.payment_dt</td>
+
+                                        </tr>
+                                        <tr style="height: 51px;">
+                                            <td class="u-table-cell">bank</td>
+                                            <td class="u-table-cell">@Model.payment.bank</td>
+
+
+                                        </tr>
+                                        <tr style="height: 52px;">
+                                            <td class="u-table-cell">delivery cost</td>
+                                            <td class="u-table-cell">@Model.payment.delivery_cost</td>
+
+                                        </tr>
+                                        <tr style="height: 51px;">
+                                            <td class="u-table-cell">goods total</td>
+                                            <td class="u-table-cell">@Model.payment.goods_total</td>
+
+
+                                        </tr>
+                                        <tr style="height: 52px;">
+                                            <td class="u-table-cell">custom fee</td>
+                                            <td class="u-table-cell">@Model.payment.custom_fee</td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="u-container-style u-tab-pane u-white u-tab-pane-4" id="tab-b57a" role="tabpanel" aria-labelledby="link-tab-b57a">
+                        <div class="u-container-layout u-valign-top u-container-layout-4">
+                            <h4 class="u-text u-text-default u-text-4">Basic Settings</h4>
+                            <div class="u-expanded-width u-table u-table-responsive u-table-4">
+                                <table class="u-table-entity">
+                                    <colgroup>
+                                        <col width="25%">
+                                        <col width="25%">
+                                        <col width="25%">
+                                        <col width="25%">
+                                    </colgroup>
+                                    <tbody class="u-table-alt-grey-5 u-table-body">
+                                        <tr style="height: 51px;">
+                                            <td class="u-table-cell">Name</td>
+                                            <td class="u-table-cell">Value</td>
+                                        </tr>
+                                        @{
+                                            foreach (var item in Model.items)
+                                            {
+                                                <tr style="height: 51px;">
+                                                    <td class="u-table-cell">chrt id</td>
+                                                    <td class="u-table-cell">@item.chrt_id</td>
+                                                </tr>
+                                                <tr style="height: 51px;">
+                                                    <td class="u-table-cell">track number</td>
+                                                    <td class="u-table-cell">@item.track_number</td>
+                                                </tr>
+                                                <tr style="height: 51px;">
+                                                    <td class="u-table-cell">price</td>
+                                                    <td class="u-table-cell">@item.price</td>
+                                                </tr>
+                                                <tr style="height: 51px;">
+                                                    <td class="u-table-cell">rid</td>
+                                                    <td class="u-table-cell">@item.rid</td>
+                                                </tr>
+                                                <tr style="height: 51px;">
+                                                    <td class="u-table-cell">name</td>
+                                                    <td class="u-table-cell">@item.name</td>
+                                                </tr>
+                                                <tr style="height: 51px;">
+                                                    <td class="u-table-cell">sale</td>
+                                                    <td class="u-table-cell">@item.sale</td>
+                                                </tr>
+                                                <tr style="height: 51px;">
+                                                    <td class="u-table-cell">size</td>
+                                                    <td class="u-table-cell">@item.size</td>
+                                                </tr>
+                                                <tr style="height: 51px;">
+                                                    <td class="u-table-cell">total price</td>
+                                                    <td class="u-table-cell">@item.total_price</td>
+                                                </tr>
+                                                <tr style="height: 51px;">
+                                                    <td class="u-table-cell">nm id</td>
+                                                    <td class="u-table-cell">@item.nm_id</td>
+                                                </tr>
+                                                <tr style="height: 51px;">
+                                                    <td class="u-table-cell">brand</td>
+                                                    <td class="u-table-cell">@item.brand</td>
+                                                </tr>
+                                                <tr style="height: 51px;">
+                                                    <td class="u-table-cell">status</td>
+                                                    <td class="u-table-cell">@item.status</td>
+                                                </tr>
+                                            }
+                                        }
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
