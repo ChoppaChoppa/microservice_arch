@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	conn, errConn := DataBase.Connection("postgresql://maui:maui@192.168.0.12:5432/postgres")
+	conn, errConn := DataBase.Connection("postgresql://maui:maui@192.168.0.139:5432/postgres")
 	if errConn != nil {
 		fmt.Println("failed to connect db: ", errConn)
 		return

@@ -90,7 +90,7 @@ func (dataBase *DB) GetOrders(ctx context.Context, id string) (Models.OrderInfo,
 func (dataBase *DB) GetLasts(ctx context.Context, count int) ([]Models.OrderInfo, error){
 	var Orders []Models.OrderInfo
 
-	fmt.Println("sstart get lasts")
+	fmt.Println("start get lasts")
 	if errGetOrder := dataBase.connect.SelectContext(ctx, &Orders, `
 			SELECT id, order_uid, track_number, entry, locale, internal_signature,
                         customer_id, delivery_service, shard_key, sm_id, date_created, oof_shard
