@@ -27,14 +27,20 @@ func Router(stanConn NatsConn) *chi.Mux {
 		defer r.Body.Close()
 
 		var msg Models.Message
-		if errUnmarshalBody := UnmarshalBody(r.Body, &msg); errUnmarshalBody != nil || msg.SecretKey != secretKey{
-			HttpProcessing.HttpError(w, errUnmarshalBody, "failed unmarshal body or wrong key",
+		if errUnmarshalBody := UnmarshalBody(r.Body, &msg); errUnmarshalBody != nil {
+			HttpProcessing.HttpError(w, errUnmarshalBody, "failed unmarshal body",
+				"bad request", http.StatusBadRequest)
+			return
+		}
+
+		if msg.SecretKey != secretKey {
+			HttpProcessing.HttpError(w, fmt.Errorf("wrong key"), "failed unmarshal body or wrong key",
 				"bad request", http.StatusBadRequest)
 			return
 		}
 
 		msgResp := Models.Message{
-			Order: msg.Order,
+			Order:     msg.Order,
 			SecretKey: "sub_db",
 		}
 

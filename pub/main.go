@@ -9,7 +9,7 @@ import (
 
 func main() {
 	stanConn, errConn := stan.Connect("test-cluster", "publisher",
-		stan.NatsURL("172.20.10.3:4222"))
+		stan.NatsURL("127.0.0.1:4222"))
 	if errConn != nil {
 		fmt.Println("conn: ", errConn)
 		return
