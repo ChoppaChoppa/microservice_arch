@@ -35,7 +35,7 @@ func KeepAliveSub(pg DataBase, url, clusterID, clientID, subject string) error {
 
 
 		var msg Models.Message
-		_, errSub := stanConn.Subscribe(subject, func(m *stan.Msg) {
+		_, errSub := stanConn.QueueSubscribe(subject, "queue", func(m *stan.Msg) {
 			if errUnmarshal := json.Unmarshal(m.Data, &msg); errUnmarshal != nil {
 				fmt.Println("unmarshal: ", errUnmarshal)
 				return
@@ -50,7 +50,7 @@ func KeepAliveSub(pg DataBase, url, clusterID, clientID, subject string) error {
 			if errAdd != nil {
 				fmt.Println("failed to add in db: ", errAdd)
 			}
-		})
+		}, stan.DurableName("sub_db"))
 		if errSub != nil {
 			fmt.Println("failed subscribe")
 			continue
