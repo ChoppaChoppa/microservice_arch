@@ -34,7 +34,7 @@ func CreateCache(cache *lru.Cache, cacheSize int) error {
 	if errUnmarshalBody := json.Unmarshal(body, &orders); errUnmarshalBody != nil || errGetBody != nil {
 		return fmt.Errorf("unmarshal body: %v", errUnmarshalBody)
 	}
-	
+
 	for _, v := range orders {
 		cache.Add(v.ID, v)
 	}

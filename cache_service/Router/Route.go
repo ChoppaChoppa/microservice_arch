@@ -30,41 +30,50 @@ func Route(cache *lru.Cache) *chi.Mux{
 	router.Get("/cache/{id}", func(w http.ResponseWriter, r *http.Request){
 		id := chi.URLParam(r, "id")
 
-		var order interface{}
-		var ok bool
-
-		fmt.Println("get from cache")
-		order, ok = cache.Get(id)
+		order, ok := cache.Get(id)
 		if !ok {
 			fmt.Println("get from db")
 
-			orderResp, errResp:= http.Get("http://127.0.0.1:3000/sub_db/get/" + id)
+			orderResp, errResp := http.Get("http://127.0.0.1:3000/sub_db/get/" + id)
 			if errResp != nil {
 				HttpProcessing.ErrorHandler(w, errResp, "http request",
 					"server error", http.StatusInternalServerError)
 				return
 			}
-
 			body, errGetBody := ioutil.ReadAll(orderResp.Body)
-			if errGetOrder := json.Unmarshal(body, &order); errGetOrder != nil || errGetBody != nil {
-				HttpProcessing.ErrorHandler(w, errResp, "unmarshal body or get body",
+			if errGetBody != nil {
+				HttpProcessing.ErrorHandler(w, errGetBody, "get body",
 					"server error", http.StatusInternalServerError)
 				return
 			}
 
-			cache.Add(order.(Models.OrderInfo).ID, order)
-		}
+			var modelOrder Models.OrderInfo
+			if errGetOrder := json.Unmarshal(body, &modelOrder); errGetOrder != nil {
+				HttpProcessing.ErrorHandler(w, errGetOrder, "unmarshal body",
+					"server error", http.StatusInternalServerError)
+				return
+			}
 
-		resp, errMarshal := json.Marshal(order.(Models.OrderInfo))
-		if errMarshal != nil {
-			HttpProcessing.ErrorHandler(w, errMarshal, "marshal order",
-				"server error", http.StatusInternalServerError)
+			cache.Add(modelOrder.ID, modelOrder)
+			sendResp(w, modelOrder)
 			return
 		}
 
-		w.Header().Set("Content-Type", "application-json")
-		w.Write(resp)
+		fmt.Println("get from cache")
+		sendResp(w, order.(Models.OrderInfo))
 	})
 
 	return router
+}
+
+func sendResp(w http.ResponseWriter, order Models.OrderInfo){
+	resp, errMarshal := json.Marshal(order)
+	if errMarshal != nil {
+		HttpProcessing.ErrorHandler(w, errMarshal, "marshal order",
+			"server error", http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application-json")
+	w.Write(resp)
 }
