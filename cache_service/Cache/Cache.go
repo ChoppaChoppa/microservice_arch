@@ -20,7 +20,7 @@ type Postgres struct {
 }
 
 func CreateCache(cache *lru.Cache, cacheSize int) error {
-	resp, errGetLasts := http.Get("http://127.0.0.1:3002/sub_db/lasts/" + strconv.Itoa(cacheSize))
+	resp, errGetLasts := http.Get("http://127.0.0.1:3000/sub_db/lasts/" + strconv.Itoa(cacheSize))
 	if errGetLasts != nil {
 		return fmt.Errorf("get lasts: %v", errGetLasts)
 	}
@@ -30,6 +30,7 @@ func CreateCache(cache *lru.Cache, cacheSize int) error {
 	if errGetBody != nil {
 		fmt.Errorf("get body: %v", errGetBody.Error())
 	}
+
 	if errUnmarshalBody := json.Unmarshal(body, &orders); errUnmarshalBody != nil || errGetBody != nil {
 		return fmt.Errorf("unmarshal body: %v", errUnmarshalBody)
 	}
